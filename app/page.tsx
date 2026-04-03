@@ -1,4 +1,16 @@
+"use client";
+
+import { useEffect } from "react";
+
 export default function Weather() {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      window.location.reload();
+    }, 3600000); // รีเฟรชทุก 1 ชั่วโมง
+
+    return () => clearInterval(interval);
+  }, []);
+
   const currentWeather = {
     city: "กรุงเทพ",
     temp: 32,
@@ -102,7 +114,7 @@ export default function Weather() {
             <div className="relative">
               <p className="text-primary font-bold uppercase tracking-[0.2em] text-[11px] mb-2">📍 ข้อมูลสภาพอากาศจริงเวลา</p>
               <h2 className="text-5xl font-black text-on-surface tracking-tight leading-tight font-headline mb-3">สภาพอากาศ <span className="bg-gradient-to-r from-surface-tint to-primary bg-clip-text text-transparent">ประเทศไทย</span></h2>
-              <p className="text-on-surface-variant mt-2 leading-relaxed font-light text-lg">ข้อมูลสภาพอากาศปัจจุบันและพยากรณ์ 5 วันข้างหน้า</p>
+              <p className="text-on-surface-variant mt-2 leading-relaxed font-light text-lg">ข้อมูลสภาพอากาศปัจจุบันและพยากรณ์ 5 วันข้างหน้า (รีเฟรชอัตโนมัติทุก 1 ชั่วโมง)</p>
             </div>
           </div>
         </header>
